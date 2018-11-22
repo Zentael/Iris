@@ -1,17 +1,19 @@
-const btnQuota = document.getElementById('calculQuota');
 
+/* TEST DU QUOTA DE TRAVAILLEURS HANDICAPES */
+const btnQuota = document.getElementById('calculQuota');
 btnQuota.onclick = function (){
+
     const nbEmployes = document.getElementById('effectif').value;
     const nbEmployesHandi = document.getElementById('handicap').value;
     const result = document.getElementById('resultQuota');
 
-    if (nbEmployes < nbEmployesHandi){
+    if (Number(nbEmployes) < Number(nbEmployesHandi)){
         //result.style.backgroundColor = "red";
         //return result.innerText = "Je crois que vous vous êtes trompés dans vos chiffres, vérifiez et réessayez !";
-        result.setAttribute("src", "assets/img/incoherent.png");
+        return result.setAttribute("src", "assets/img/incoherent.png");
     }
 
-    let nbQuota = nbEmployes/(50/3) - nbEmployesHandi;
+    var nbQuota = nbEmployes/(50/3) - nbEmployesHandi;
     nbQuota = Math.ceil(nbQuota);
 
     if (nbQuota > 0){
@@ -51,3 +53,5 @@ $(document).on('click', 'a[href^="#"]', function (event) {
         scrollTop: $($.attr(this, 'href')).offset().top
     }, 500);
 });
+
+
